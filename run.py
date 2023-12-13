@@ -5,24 +5,33 @@ from utils.embedding import Embedding
 from utils.read_files import question_data
 from questions import questions
 
-# def main():
-#     load_dotenv()
-#     openai.api_key = os.environ.get("OPENAI_API_KEY")
+
+class Main:
+    def __init__(self, api_key, embedding_model) -> None:
+        self.embedding = Embedding(api_key, embedding_model)
+
+    def embed_and_write(self, inputs):
+        questions = self.embedding.add_questions(inputs)
+        self.embedding.write(questions)
+
+    def create_and_populate_collections(self, dataframe):
+        question_collection = self.embedding.create_collections("questions")
+        self.embedding.populate_collection(question_collection, dataframe)
+        return question_collection
+
+    def query(self, collection, query, dataframe):
+        return self.embedding.query_collection(collection, query, 1, dataframe)
 
 
-def embed_and_write(input):
+def load_envs():
     load_dotenv()
-    embedding = Embedding(
-        os.environ.get("OPENAI_API_KEY"), os.environ.get("EMBEDDING_MODEL")
-    )
-    question_collection = embedding.create_collections("questions")
-    embedding.populate_collection(question_collection, input)
-    # questions = embedding.add_questions(input)
-    # embedding.write(questions)
+    return [os.environ.get("OPENAI_API_KEY"), os.environ.get("EMBEDDING_MODEL")]
 
 
-# main()
-# embed_and_write("embed_example")
-# embed_testing(embedded_example)
-
-embed_and_write(question_data())
+envs = load_envs()
+questions_dataframe = question_data()
+main = Main(envs[0], envs[1])
+# main.embed_and_write(questions)
+collection = main.create_and_populate_collections(questions_dataframe)
+response = main.query(collection, "hasta donde llegan", questions_dataframe)
+print(response)
