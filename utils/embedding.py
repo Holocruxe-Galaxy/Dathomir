@@ -56,3 +56,25 @@ class Embedding:
 
         df = pd.DataFrame(formatted_questions)
         df.to_csv("files/vectors.csv", encoding="latin1", index=False)
+
+    @staticmethod
+    def query_collection(collection, query, max_results, dataframe):
+        print(collection)
+        results = collection.query(
+            query_texts=query, n_results=max_results, include=["distances"]
+        )
+        print("hi2")
+        df = pd.DataFrame(
+            {
+                "id": results["ids"][0],
+                "score": results["distances"][0],
+                "question": dataframe[dataframe.vector_id.isin(results["ids"][0])][
+                    "question"
+                ],
+                "response": dataframe[dataframe.vector_id.isin(results["ids"][0])][
+                    "response"
+                ],
+            }
+        )
+
+        return df
