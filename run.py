@@ -1,12 +1,19 @@
 import openai
 from dotenv import load_dotenv
 import os
-from utils.embedding import add_questions
+from utils.embedding import Embedding
+from utils.read_files import question_data
 
 
 def main():
     load_dotenv()
     openai.api_key = os.environ.get("OPENAI_API_KEY")
+
+
+def embed(input):
+    load_dotenv()
+    embedding = Embedding(os.environ.get("OPENAI_API_KEY"))
+    return embedding.add_questions(input)
 
 
 questions = [
@@ -16,4 +23,5 @@ questions = [
 ]
 
 main()
-print(add_questions(questions))
+# print(embed(questions))
+# question_data()
