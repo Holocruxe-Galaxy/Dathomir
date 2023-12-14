@@ -1,11 +1,13 @@
-import openai
+import asyncio
+from http.client import responses
+from flask import Flask, request, jsonify
 from dotenv import load_dotenv
 import os
 from utils.embedding import Embedding
 from utils.read_files import question_data
 from questions import questions
 
-
+app = Flask(__name__)
 class Main:
     def __init__(self, api_key, embedding_model) -> None:
         self.embedding = Embedding(api_key, embedding_model)
@@ -20,7 +22,10 @@ class Main:
         return question_collection
 
     def query(self, collection, query, dataframe):
-        return self.embedding.query_collection(collection, query, 1, dataframe)
+        df = self.embedding.query_collection(collection, query, 1, dataframe)
+        return self.embedding.format_json(df)
+         
+        
 
 
 def load_envs():
@@ -31,7 +36,23 @@ def load_envs():
 envs = load_envs()
 questions_dataframe = question_data()
 main = Main(envs[0], envs[1])
-# main.embed_and_write(questions)
+#main.embed_and_write(questions)
 collection = main.create_and_populate_collections(questions_dataframe)
-response = main.query(collection, "hasta donde llegan", questions_dataframe)
-print(response)
+
+
+
+
+
+
+@app.route("/questions")
+def answerQuestion():
+    question = request.args.get("question")
+    if not question:
+        return jsonify({"Error": "La pregunta es obligatoria"}), 400
+    else:
+        response = main.query(collection, question, questions_dataframe)
+        return response
+       
+    
+if __name__ == '__main__':
+    app.run()
