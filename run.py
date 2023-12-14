@@ -7,6 +7,7 @@ from utils.embedding import Embedding
 from utils.read_files import question_data
 from questions import questions
 from flask_cors import CORS
+
 app = Flask(__name__)
 
 
@@ -26,7 +27,7 @@ class Main:
     def query(self, collection, query, dataframe):
         df = self.embedding.query_collection(collection, query, 1, dataframe)
         json_response = self.embedding.format_json(df)
-        if json_response["data"][0][0] > 0.46:
+        if json_response["data"][0][0] > 0.425:
             return "Disculpa, no entendí la pregunta. Prueba reformularla."
         return json_response["data"][0][1]
 
@@ -51,9 +52,9 @@ def answerQuestion():
     else:
         response = main.query(collection, question, questions_dataframe)
         return jsonify({"response": response})
-       
-    
+
+
 CORS(app, origins="*")
 
-if __name__ == '__main__':
-  app.run(host="0.0.0.0", port=8080, threaded=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8080, threaded=True)
