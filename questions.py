@@ -8,7 +8,7 @@ questions = [
         "response": "Puedes verificar el estado de tu envío a través de éste link: https://estado.link",
     },
     {
-        "question": "¿Cómo puedo hacer el seguimiento de mi envío?",
+        "question": "¿Cómo puedo hacer el seguimiento o saber dónde está mi envío?",
         "response": "Puedes hacer seguimiento de tu envío a través de éste link: https://seguimiento.link",
     },
     {
