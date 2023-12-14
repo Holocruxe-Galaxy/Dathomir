@@ -40,7 +40,7 @@ def load_envs():
 envs = load_envs()
 questions_dataframe = question_data()
 main = Main(envs[0], envs[1])
-main.embed_and_write(questions)
+# main.embed_and_write(questions)
 collection = main.create_and_populate_collections(questions_dataframe)
 
 
