@@ -6,7 +6,7 @@ import os
 from utils.embedding import Embedding
 from utils.read_files import question_data
 from questions import questions
-
+from flask_cors import CORS
 app = Flask(__name__)
 
 
@@ -50,8 +50,10 @@ def answerQuestion():
         return jsonify({"Error": "La pregunta es obligatoria"}), 400
     else:
         response = main.query(collection, question, questions_dataframe)
-        return response
+        return jsonify({"response": response})
        
     
+CORS(app, origins="*")
+
 if __name__ == '__main__':
-  app.run(host="0.0.0.0", port=8080, debug=True, threaded=True)
+  app.run(host="0.0.0.0", port=8080, threaded=True)
