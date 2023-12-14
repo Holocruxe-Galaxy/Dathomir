@@ -1,8 +1,9 @@
+from ast import arguments
 import openai
 import chromadb
 from chromadb.utils.embedding_functions import OpenAIEmbeddingFunction
 import pandas as pd
-
+import json
 # import xlsxwriter
 
 
@@ -59,22 +60,26 @@ class Embedding:
 
     @staticmethod
     def query_collection(collection, query, max_results, dataframe):
-        print(collection)
+        
         results = collection.query(
             query_texts=query, n_results=max_results, include=["distances"]
         )
-        print("hi2")
         df = pd.DataFrame(
             {
-                "id": results["ids"][0],
-                "score": results["distances"][0],
-                "question": dataframe[dataframe.vector_id.isin(results["ids"][0])][
-                    "question"
-                ],
                 "response": dataframe[dataframe.vector_id.isin(results["ids"][0])][
                     "response"
                 ],
             }
         )
-
+ 
         return df
+    
+    @staticmethod
+    def format_json(df):
+        json_dict = json.loads(df.to_json(force_ascii=False, orient='split'))
+        return json_dict["data"][0][0]
+  
+        
+        
+    
+        
