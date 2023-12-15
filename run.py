@@ -27,7 +27,8 @@ class Main:
     def query(self, collection, query, dataframe):
         df = self.embedding.query_collection(collection, query, 1, dataframe)
         json_response = self.embedding.format_json(df)
-        if json_response["data"][0][0] > 0.425:
+        print(json_response["data"][0][0])
+        if json_response["data"][0][0] > 0.41:
             return "Disculpa, no entendí la pregunta. Prueba reformularla."
         return json_response["data"][0][1]
 
@@ -40,7 +41,7 @@ def load_envs():
 envs = load_envs()
 questions_dataframe = question_data()
 main = Main(envs[0], envs[1])
-# main.embed_and_write(questions)
+main.embed_and_write(questions)
 collection = main.create_and_populate_collections(questions_dataframe)
 
 
@@ -57,4 +58,4 @@ def answerQuestion():
 CORS(app, origins="*")
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080, threaded=True)
+    app.run(host="0.0.0.0", port=8080, threaded=True, debug=True)

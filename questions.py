@@ -4,15 +4,27 @@ questions = [
         "response": "El costo de asegurar tu envío es de $10.000",
     },
     {
+        "question": "comprar",
+        "response": "El costo de asegurar tu envío es de $10.000",
+    },
+    {
         "question": "¿Cómo puedo verificar el estado de mi envío?",
         "response": "Puedes verificar el estado de tu envío a través de este link: https://estado.link",
     },
     {
-        "question": "¿Cómo puedo hacer el seguimiento o saber dónde está mi envío?",
+        "question": "estado status",
+        "response": "Puedes verificar el estado de tu envío a través de este link: https://estado.link",
+    },
+    {
+        "question": "¿Cómo puedo hacer el seguimiento está mi envío?",
         "response": "Puedes hacer seguimiento de tu envío a través de este link: https://seguimiento.link",
     },
     {
-        "question": "¿Cuál es la máxima distancia que hacen?",
+        "question": "donde",
+        "response": "Puedes hacer seguimiento de tu envío a través de este link: https://seguimiento.link",
+    },
+    {
+        "question": "¿Cuál es la distancia máxima que hacen?",
         "response": "Hacemos más de 800 kilómetros",
     },
     {
@@ -20,15 +32,27 @@ questions = [
         "response": "¡Claro! Aquí tienes un número al que puedes llamar por alguna consulta 44122421",
     },
     {
-        "question": "¿Qué tipo de vehículos utilizan en Xegure?",
+        "question": "¿Qué tipo de vehículos utilizan?",
         "response": "En Xegure utilizamos camionetas, furgonetas, autos y camiones blindados",
+    },
+    {
+        "question": "Hola",
+        "response": "Hola, mi nombre es Xegurón, ¿en qué puedo ayudarte?",
+    },
+    {
+        "question": "¿Cómo te llamas?",
+        "response": "Mi nombre es Xegurón, encantado. ¿En qué puedo ayudarte?",
+    },
+    {
+        "question": "¿Cómo estás?",
+        "response": "Estoy bien, ¡muchas gracias! ¿En qué puedo ayudarte?",
     },
     {
         "question": "Hola, ¿cómo estás?",
         "response": "Hola, yo me encuentro muy bien, ¿y tú? ¿En qué puedo ayudarte?",
     },
     {
-        "question": "Adiós",
+        "question": "¡Adiós!",
         "response": "¡Hasta pronto!",
     },
     {
