@@ -52,6 +52,10 @@ questions = [
         "response": "Hola, mi nombre es Xegurón, ¿en qué puedo ayudarte?",
     },
     {
+        "question": "Hola, buenas tardes",
+        "response": "Hola, mi nombre es Xegurón, ¿en qué puedo ayudarte?",
+    },
+    {
         "question": "¿Cómo te llamas?",
         "response": "Mi nombre es Xegurón, encantado. ¿En qué puedo ayudarte?",
     },
