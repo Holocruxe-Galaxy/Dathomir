@@ -27,8 +27,8 @@ class Main:
     def query(self, collection, query, dataframe):
         df = self.embedding.query_collection(collection, query, 1, dataframe)
         json_response = self.embedding.format_json(df)
-        if json_response["data"][0][0] > 0.425:
-            return "Disculpa, no entendí la pregunta. Prueba reformularla."
+        if json_response["data"][0][0] > 0.375:
+            return "No te entendí bien, lo siento mucho. Puedo contestarte a cualquier duda que tengas acerca de los servicios de Xegure."
         return json_response["data"][0][1]
 
 

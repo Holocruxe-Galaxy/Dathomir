@@ -28,7 +28,19 @@ questions = [
         "response": "Hacemos más de 800 kilómetros",
     },
     {
+        "question": "distancia, kms",
+        "response": "Hacemos más de 800 kilómetros",
+    },
+    {
+        "question": "hasta donde lo llevan",
+        "response": "Hacemos más de 800 kilómetros",
+    },
+    {
         "question": "¿Me puedes pasar un número de soporte?",
+        "response": "¡Claro! Aquí tienes un número al que puedes llamar por alguna consulta 44122421",
+    },
+    {
+        "question": "num, numero",
         "response": "¡Claro! Aquí tienes un número al que puedes llamar por alguna consulta 44122421",
     },
     {
