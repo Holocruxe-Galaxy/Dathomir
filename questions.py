@@ -64,6 +64,10 @@ questions = [
         "response": "Hola, yo me encuentro muy bien, ¿y tú? ¿En qué puedo ayudarte?",
     },
     {
+        "question": "Quisiera hacerte una consulta",
+        "response": "¡Por supuesto! Estoy aquí para ayudarte con cualquier consulta que tengas sobre Xegure.",
+    },
+    {
         "question": "¡Adiós!",
         "response": "¡Hasta pronto!",
     },
