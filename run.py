@@ -27,7 +27,6 @@ class Main:
     def query(self, collection, query, dataframe):
         df = self.embedding.query_collection(collection, query, 1, dataframe)
         json_response = self.embedding.format_json(df)
-        print(json_response["data"][0][0])
         if json_response["data"][0][0] > 0.365:
             return "No te entendí bien, lo siento mucho. Puedo contestarte a cualquier duda que tengas acerca de los servicios de Xegure."
         return json_response["data"][0][1]
@@ -58,4 +57,4 @@ def answerQuestion():
 CORS(app, origins="*")
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080, threaded=True, debug=True)
+    app.run(host="0.0.0.0", port=8080, threaded=True)
