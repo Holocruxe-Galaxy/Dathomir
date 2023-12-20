@@ -14,6 +14,7 @@ class Session:
     def compare_tokens(self, req, res):
         if self.f.decrypt(req["token"]) == self.f.decrypt(res):
             return req["repeated"] + 1
+        return 0
 
     @staticmethod
     def give_response(responses=None):
