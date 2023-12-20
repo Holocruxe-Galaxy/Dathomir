@@ -29,19 +29,19 @@ class Main:
     def query(self, collection, query, dataframe):
         df = self.embedding.query_collection(collection, query, 1, dataframe)
         json_response = self.embedding.format_json(df)
-        if json_response["data"][0][0] > 0.355:
-            return "No te entendí bien, lo siento. Puedo contestarte cualquier duda acerca de los servicios de Xegure."
-        return json_response["data"][0][1]
+        if json_response["score"] > 0.355:
+            return [self.embedding.give_response()]
+        return json_response["response"]
 
     def response_manager(self, req, res):
-        token = self.session.generate_token(res)
-
+        token = self.session.generate_token(res[0])
+        response = self.session.give_response(res)
         if not req["token"]:
-            return {"response": res, "repeated": 0, "token": token}
+            return {"response": response, "repeated": 0, "token": token}
         repeated = self.session.compare_tokens(req, token)
         if repeated <= 2:
-            return {"response": res, "repeated": repeated, "token": token}
-        response = "Parece que no estoy pudiendo ayudarlo. Por favor comuníquese con atención al cliente"
+            return {"response": response, "repeated": repeated, "token": token}
+        response = self.session.give_response()
         return {"response": response, "repeated": repeated, "token": token}
 
 
@@ -72,4 +72,4 @@ def answerQuestion():
 CORS(app, origins="*")
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080, threaded=True)
+    app.run(host="0.0.0.0", port=8080, threaded=True, debug=True)
