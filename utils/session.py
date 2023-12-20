@@ -16,7 +16,7 @@ class Session:
             return req["repeated"] + 1
 
     @staticmethod
-    def give_response(responses):
+    def give_response(responses=None):
         if responses:
             return responses[random.randint(0, len(responses) - 1)]
         return "Parece que no estoy pudiendo ayudarlo. Por favor comuníquese con atención al cliente"
