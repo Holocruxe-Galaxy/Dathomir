@@ -77,5 +77,10 @@ class Embedding:
 
     @staticmethod
     def format_json(df):
-        json_dict = json.loads(df.to_json(force_ascii=False, orient="split"))
-        return json_dict
+        json_dict = json.loads(df.to_json(force_ascii=False, orient="records"))
+        json_dict[0]["response"] = eval(json_dict[0]["response"])
+        return json_dict[0]
+
+    @staticmethod
+    def give_response():
+        return "No te entendí bien, lo siento. Puedo contestarte cualquier duda acerca de los servicios de Xegure"
