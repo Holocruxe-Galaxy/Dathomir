@@ -1,5 +1,6 @@
-from utils.session import Session
 from utils.embedding import Embedding
+from utils.session import Session
+from utils.load_envs import load_envs
 
 
 class Main:
@@ -33,3 +34,7 @@ class Main:
             return {"response": response, "repeated": repeated, "token": token}
         response = self.session.give_response()
         return {"response": response, "repeated": repeated, "token": token}
+
+
+envs = load_envs()
+main = Main(envs[0], envs[1])
