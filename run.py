@@ -1,23 +1,13 @@
-import os
 from flask import Flask, request, jsonify
-from dotenv import load_dotenv
-from utils.main import Main
-from utils.read_files import question_data
-from questions import questions
 from flask_cors import CORS
+from utils.main import main
+from utils.question_data import question_data
+from questions import questions
 
 app = Flask(__name__)
 
-
-def load_envs():
-    load_dotenv()
-    return [os.environ.get("OPENAI_API_KEY"), os.environ.get("EMBEDDING_MODEL")]
-
-
-envs = load_envs()
-questions_dataframe = question_data()
-main = Main(envs[0], envs[1])
 # main.embed_and_write(questions)
+questions_dataframe = question_data()
 collection = main.create_and_populate_collections(questions_dataframe)
 
 
