@@ -20,4 +20,4 @@ class Session:
     def give_response(responses=None):
         if responses:
             return responses[random.randint(0, len(responses) - 1)]
-        return "Parece que no estoy pudiendo ayudarlo. Por favor comuníquese con atención al cliente"
+        return "Parece que no estoy pudiendo ayudarte. Por favor comunícate con atención al cliente"

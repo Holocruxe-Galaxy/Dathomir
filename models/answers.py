@@ -1,4 +1,3 @@
-
-def class Answers:
-    __init__():
-        
+class Answers:
+    def where():
+        return

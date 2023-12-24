@@ -1,8 +1,6 @@
-import asyncio
-from http.client import responses
+import os
 from flask import Flask, request, jsonify
 from dotenv import load_dotenv
-import os
 from utils.main import Main
 from utils.read_files import question_data
 from questions import questions
